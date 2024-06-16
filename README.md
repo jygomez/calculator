@@ -24,9 +24,14 @@ This is a simple calculator project built with TypeScript, HTML, and CSS. The ca
 
 
 # Pre-Requisites
-Make sure you have the following software installed before proceeding:
+Make sure you have completed the following steps and installed the necessary softwares, dependencies, libraries and/or packages, before proceeding:
 
 - [Visual Studio Code](https://code.visualstudio.com/Download)
+
+- Create your project folder.
+
+- Open your terminal or command prompt in the directory of your project or navigate to your project's folder.
+
 - [Node.js and npm](https://nodejs.org/en/download/package-manager):
     1. Install nvm (Node Version Manager):
     ```bash
@@ -105,9 +110,11 @@ You can view the versions of dependencies and packages used in this project and 
     ```
 
 # Usage
+- Open your terminal or command prompt in your project directory.
+
 - Clon the project from git:
-    ```git
-    git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+    ```bash
+    git clone https://github.com/jygomez/calculator.git
     ```
 
 - Navigate to the project directory and install the dependencies:
