@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     type CalculatorInput = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '.' | '+' | '+/-' | '-' | '*' | '/' | '=' | 'Enter' | 'Backspace' | '⌫' | 'C' | 'Escape';
 
-
-
     // Set initial screen value to zero
     screen.value = '0';
 
@@ -33,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (value === '.') {
             // Split the expression by operators to get the current number being entered
             let parts: string[] = screen.value.split(/[\+\-\*\/]/);
-            const currentNumber: string = parts[parts.length - 1];
+            let currentNumber: string = parts[parts.length - 1];
             if (currentNumber.includes('.')) {
                 return;
             }
@@ -75,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } else {
             if (screen.value === '0' && value !== '.') {
-                screen.value = ''; // Remove leading zero if screen value is zero
+                screen.value = '';
             }
             const newValue: string = screen.value + value;
             if (isValueinRange(parseFloat(newValue))) {
