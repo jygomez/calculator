@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Set initial screen value to zero
     screen.value = '0';
 
+    // Add a variable to track the last input
+    let lastInput: string = ''
+
     // Function to validate input within the range
     function isValidInput(input: string): input is CalculatorInput {
         return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '+/-', '-', '*', '/', '=', 'Enter', 'Backspace', '⌫', 'C', 'Escape'].includes(input);
@@ -23,6 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (screen.value.includes('Error')) {
             screen.value = ''; // Clear error message when new input is detected
         }
+        // Check if the value is an operator and the last input was also an operator
+        if (['+', '-', '*', '/', '.'].includes(value) && lastInput && ['+', '-', '*', '/', '.'].includes(lastInput)) {
+            // Ignore the input if it's an operator and the last input was also an operator
+            return;
+        }
+        // Update the last input
+        lastInput = value;
         if (value === '=' || value === 'Enter') {
             try {
                 let result: number = eval(screen.value);
