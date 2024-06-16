@@ -117,11 +117,6 @@ You can view the versions of dependencies and packages used in this project and 
     git clone https://github.com/jygomez/calculator.git
     ```
 
-- Navigate to the project directory and install the dependencies:
-    ```bash
-    cd calculator
-    ```
-
 - Script for building the porject on the live server.
     ```bash
     npm run build
