@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.button');
     const screen = document.querySelector('.calculator-screen') as HTMLInputElement;
-
     type CalculatorInput = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '.' | '+' | '+/-' | '-' | '*' | '/' | '=' | 'Enter' | 'Backspace' | '⌫' | 'C' | 'Escape';
 
     // Set initial screen value to zero
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return input >= -9999.99 && input <= 9999.99;
     }
 
-    // Function to handle calculator logic
+    // Function to handle calculator logic    
     function handleInput(value: CalculatorInput) {
         if (screen.value.includes('Error')) {
             screen.value = ''; // Clear error message when new input is detected
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (value === '+/-') {
             // Toggle the sign of the last number in the expression
             let expression: string = screen.value;
-            const match: string[] | null  = expression.match(/-?(\d+\.?\d*)$/);
+            const match: string[] | null = expression.match(/-?(\d+\.?\d*)$/);
             if (match) {
                 const lastNumber: string = match[0];
                 if (lastNumber.charAt(0) === '-') {
