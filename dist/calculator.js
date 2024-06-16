@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const screen = document.querySelector('.calculator-screen');
     // Set initial screen value to zero
     screen.value = '0';
-    // Add a variable to track the last input
-    let lastInput = '';
     // Function to validate input within the range
     function isValidInput(input) {
         return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '+/-', '-', '*', '/', '=', 'Enter', 'Backspace', '⌫', 'C', 'Escape'].includes(input);
@@ -18,13 +16,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (screen.value.includes('Error')) {
             screen.value = ''; // Clear error message when new input is detected
         }
+        let lastInput = screen.value.charAt(screen.value.length - 1);
         // Check if the value is an operator and the last input was also an operator
         if (['+', '-', '*', '/', '.'].includes(value) && lastInput && ['+', '-', '*', '/', '.'].includes(lastInput)) {
             // Ignore the input if it's an operator and the last input was also an operator
             return;
         }
-        // Update the last input
-        lastInput = value;
+        // Prevent multiple decimal points in a number
+        if (value === '.') {
+            // Split the expression by operators to get the current number being entered
+            let parts = screen.value.split(/[\+\-\*\/]/);
+            const currentNumber = parts[parts.length - 1];
+            if (currentNumber.includes('.')) {
+                return;
+            }
+        }
         if (value === '=' || value === 'Enter') {
             try {
                 let result = eval(screen.value);
@@ -84,7 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event listener for button clicks
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            const value = button.textContent;
+            var _a;
+            const value = (_a = button.textContent) !== null && _a !== void 0 ? _a : '';
             if (isValidInput(value)) {
                 handleInput(value);
             }
